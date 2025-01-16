@@ -44,11 +44,28 @@ public class Q3LongestSubstringWithoutRepeatingCharacters {
         return maxlegth;
 
     }
+    public int lengthOfLongestSubstring2(String s) {
+        char []chars=s.toCharArray();
+        int left=0;int right=0;
+        int maxlegth=0;
+        HashSet<Character>set=new HashSet<>();
+        for (left=0;left<chars.length;left++){
+            if (left>0){
+                set.remove(chars[left]);
+            }
+            while (right<chars.length&&!set.contains(chars[right])){
+                set.add(chars[right++]);
+            }
+            maxlegth=Math.max(right-left,maxlegth);
+        }
+        return maxlegth;
+
+    }
 
     public static void main(String[] args) {
         String x="abcabcbb";
         System.out.println(new Q3LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring(x));
-
+        System.out.println(new Q3LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring2(x));
 
     }
 }

@@ -42,7 +42,7 @@ public class Q977SquaresOfSortedArray {
     }
     public static void main(String[] args) {
         int[] nums=new int[]{-4,-1,0,3,10};
-     int []arr=new Q977SquaresOfSortedArray.sortedSquares(nums);
+//        int []arr=new Q977SquaresOfSortedArray.sortedSquares(nums);
 
     }
 }

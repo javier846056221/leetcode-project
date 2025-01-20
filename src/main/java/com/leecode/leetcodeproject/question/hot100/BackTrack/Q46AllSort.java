@@ -1,6 +1,6 @@
 package com.leecode.leetcodeproject.question.hot100.BackTrack;
 //46 全排列
-//todo used数组，或者path.contain去除同一路径的节点
+//todo 每次传递整个数组 不需要start 但是要used数组，或者path.contain去除同一路径的节点
 //给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。
 // 示例 1：
 //输入：nums = [1,2,3]

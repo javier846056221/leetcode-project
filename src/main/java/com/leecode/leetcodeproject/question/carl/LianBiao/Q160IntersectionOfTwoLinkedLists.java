@@ -16,7 +16,6 @@ package com.leecode.leetcodeproject.question.carl.LianBiao;
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Q160IntersectionOfTwoLinkedLists {
 
-
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode p = headA;
         int sumA = 0;

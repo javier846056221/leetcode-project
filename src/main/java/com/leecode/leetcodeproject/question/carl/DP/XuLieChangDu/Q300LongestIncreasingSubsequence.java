@@ -1,4 +1,4 @@
-package com.leecode.leetcodeproject.question.hot100.DP;
+package com.leecode.leetcodeproject.question.carl.DP.XuLieChangDu;
 //300.最长递增子序列
 //给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
 //

@@ -35,7 +35,7 @@ import java.util.HashMap;
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Q239SlidingWindowMaximum {
     public int[] maxSlidingWindow(int[] nums, int k) {
-return nums;
+    return nums;
     }
 
     public static void main(String[] args) {

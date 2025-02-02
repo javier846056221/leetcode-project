@@ -1,6 +1,6 @@
 package com.leecode.leetcodeproject.question.hot100.LianBiao;
 //146 LRU CACHE
-//todo 优先级队列+尾插
+//todo
 // 请你设计并实现一个满足
 // LRU (最近最少使用) 缓存 约束的数据结构。
 // 实现

@@ -34,7 +34,7 @@ package com.leecode.leetcodeproject.question.hot100.LianBiao;
 // 最多调用 2 * 10⁵ 次 get 和 put
 // Related Topics 设计 哈希表 链表 双向链表 👍 3360 👎 0
 
-
+import java.util.*;
 import com.leecode.leetcodeproject.question.carl.LianBiao.ListNode;
 
 import java.util.Comparator;
@@ -55,37 +55,72 @@ import java.util.PriorityQueue;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Q146LRUCache {
+    class Node{
+        int key;
+        int value;
+        public Node(int k,int v){
+            key=k;
+            value=v;
+        }
+
+    }
+
+    class LRUCache {
+        //key value是结点
+        HashMap<Integer,Node>hashMap;
+        LinkedList<Node> queue;
+        int capacity;
+
+        public LRUCache(int capacity){
+            this.capacity=capacity;
+            hashMap= new HashMap<Integer,Node>();
+            queue=new LinkedList<Node>();
+        }
+
+        public void put(int key,int value){
+            Node node=hashMap.get(key);
+            if (node != null) {
+                //元素存在 覆盖值 + 从队列移除，添加队首；
+                queue.remove(node);node.value=value;
+                queue.addFirst(node);
+            }
+            else {//元素不存在  容量不足 先删除队列尾部元素 再添加
+                if (queue.size()+1>capacity){
+                    Node x=queue.removeLast();
+                    hashMap.remove(x.key);
+                }
+                //添加
+                Node addNode=   new Node(key,value);
+                queue.addFirst( addNode);
+                hashMap.put(key,addNode);
+            }
 
 
-    public ListNode mergeKLists(ListNode[] lists) {
-        PriorityQueue<ListNode> listNodePriorityQueue = new PriorityQueue<>(new Comparator<ListNode>() {
-            @Override
-            public int compare(ListNode o1, ListNode o2) {
-                return o1.val-o2.val;
-            }
-        });
-        ListNode vh= new ListNode(0);
-        ListNode tail=vh;
-        for (ListNode a:lists){
-            while (a!=null){
-                listNodePriorityQueue.add(a);
-                a=a.next;
-            }
         }
-        while (!listNodePriorityQueue.isEmpty()){
-            ListNode a=listNodePriorityQueue.poll();
-            tail.next=a;
-            tail=a;
+        public int get(int key){
+            Node node=hashMap.get(key);
+            if (node != null) {
+                queue.remove(node);
+                queue.addFirst(node);
+                return node.value;
+
+            }
+            else {
+                return -1;
+            }
+
         }
-        tail.next=null;
-        return vh.next;
 
 
     }
 
-    public static void main(String[] args) {
-        new ListNode(1);
-    }
+    /**
+     * Your LRUCache object will be instantiated and called as such:
+     * LRUCache obj = new LRUCache(capacity);
+     * int param_1 = obj.get(key);
+     * obj.put(key,value);
+     */
 
-//leetcode s
+
+
 }

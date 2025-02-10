@@ -44,6 +44,7 @@ public class Q32LongestValidParentheses {
         if (s==null|| s.isEmpty())return 0;
         int []dp=new int[s.length()];
         int ans=0;
+
         for (int  i=0;i<s.length();i++){
                 if (i>0&&s.charAt(i)==')'){
                     if (i>=2&&s.charAt(i-1)=='('){
@@ -52,13 +53,17 @@ public class Q32LongestValidParentheses {
                     if (i<2&&s.charAt(i-1)=='('){
                         dp[i]=2;
                     }
+                    // 当前为） 前一个i-1也为） 要看与i ）对应的i-1-dp[i-1]是否是(
                     if (s.charAt(i-1)==')'){
+                        //要看与i ）对应的i-1-dp[i-1]是(  ,进一步将 i-1-dp[i-1]前面的dp[i-2-dp[i-1]]加入 添加的时候判断合法性
                         if (i-1-dp[i-1]>=0&&s.charAt(i-1-dp[i-1])=='('){
                             if (i-2-dp[i-1]>=0) {
                                 dp[i] = dp[i - 1] + 2 + dp[i - 2 - dp[i - 1]];
                             }
+                            //不合法 直接 dp[i] = dp[i - 1] + 2;
                             else  dp[i] = dp[i - 1] + 2;
                         }
+                        //默认不做处理 说明i ：）没有前面与他匹配的（ 为0
                     }
                 }
             ans=Math.max(dp[i],ans);

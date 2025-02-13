@@ -26,12 +26,13 @@ package com.leecode.leetcodeproject.question.hot100.SubArray;
 //只需要维护有可能成为窗口里最大值的元素就可以了，同时保证队列里的元素数值是由大到小的。设计单调队列的时候，pop，和push操作要保持如下规则：
 //
 //pop(value)：如果窗口移除的元素value等于单调队列的出口元素，那么队列弹出元素，否则不用任何操作
-//push(value)：如果push的元素value大于入口元素的数值，那么就将队列入口的元素弹出，直到push元素的数值小于等于队列入口元素的数值为止
+//push(value)：如果push的元素value大于入口元素的数值，那么就将队列入口的元素弹出，直到push元素的数值小于等于队列入口元素的数值为止 再加入
+//peek 队列出口首为最大值
+
 //保持如上规则，每次窗口移动的时候，只要问que.front()就可以返回当前窗口的最大值。
 
 
 import java.util.HashMap;
-
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Q239SlidingWindowMaximum {
     public int[] maxSlidingWindow(int[] nums, int k) {

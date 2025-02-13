@@ -30,7 +30,7 @@ import java.util.HashMap;
 //        mid==0||nums[mid-1]!=target 找到
 //            else 左侧找：    right=mid-1
 // }
-
+//https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/22068/ji-bai-liao-9983de-javayong-hu-by-reedfan
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Q34FindFirstAndLastPositionInSortedArray {
     public int[] searchRange(int[] nums, int target) {

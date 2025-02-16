@@ -20,6 +20,7 @@ public class Q200NumberOfIslands {
         return num;
     }
     void dfs(char[][] grid,int curx,int cury){
+        //先处理本层节点，淹没
         grid[curx][cury]='0';
         for (int i=0;i<4;i++){
             int nextx=curx+fangxiang[i][0];
@@ -27,6 +28,7 @@ public class Q200NumberOfIslands {
             if (nextx<0||nextx>= grid.length||nexty<0||nexty>= grid[0].length||grid[nextx][nexty]=='0')continue;
             dfs(grid,nextx,nexty);
         }
+        //不需要取消淹没，如果是usd数组，可能需要退栈之前恢复uesd（按照顺序有关）
     }
     void bfs(char[][] grid,int x,int y){
 

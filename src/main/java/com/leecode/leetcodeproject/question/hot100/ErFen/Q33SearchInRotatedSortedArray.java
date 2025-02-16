@@ -43,7 +43,10 @@ package com.leecode.leetcodeproject.question.hot100.ErFen;
 //
 //定理三：每次二分都会至少存在一个顺序区间。
 //
-//通过不断的用Mid二分，根据定理二，将整个数组划分成顺序区间和乱序区间，然后利用定理一判断target是否在顺序区间，如果在顺序区间，下次循环就直接取顺序区间，如果不在，那么下次循环就取乱序区间。
+
+
+
+//通过不断的用Mid二分，根据定理二，将整个数组划分成顺序区间和乱序区间，然后利用定理一判断target是否在顺序区间，如果在顺序区间，下次循环就直接取顺序区间，如果不在，那么下次循环就取乱序区间。·
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Q33SearchInRotatedSortedArray {
     public int search(int[] nums, int target) {

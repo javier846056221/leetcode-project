@@ -64,6 +64,7 @@ public class Q153FindMinimumRotatedSortedArray {
 
         while (left<right){
             int mid=left+(right-left)/2;
+            //这叫地板分，mid是靠近left的，left<right前提下不可能等于right
             if (nums[mid]>nums[right]){
                 left=mid+1;
             }

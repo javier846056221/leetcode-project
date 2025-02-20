@@ -81,7 +81,8 @@ public class Q146LRUCache {
             Node node=hashMap.get(key);
             if (node != null) {
                 //元素存在 覆盖值 + 从队列移除，添加队首；
-                queue.remove(node);node.value=value;
+                queue.remove(node);
+                node.value=value;
                 queue.addFirst(node);
             }
             else {//元素不存在  容量不足 先删除队列尾部元素 再添加

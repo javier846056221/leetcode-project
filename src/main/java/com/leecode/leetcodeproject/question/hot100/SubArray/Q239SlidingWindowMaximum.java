@@ -32,13 +32,44 @@ package com.leecode.leetcodeproject.question.hot100.SubArray;
 //保持如上规则，每次窗口移动的时候，只要问que.front()就可以返回当前窗口的最大值。
 
 
+import java.util.ArrayDeque;
 import java.util.HashMap;
-//leetcode submit region begin(Prohibit modification and deletion)
+
+class MyQueue{
+    ArrayDeque<Integer> arrayDeque= new ArrayDeque<Integer>();
+
+    public void  chu(int val){
+        if (!arrayDeque.isEmpty()&&val==arrayDeque.getLast()){
+            arrayDeque.removeLast();
+        }
+    }
+    public void ru(int val){
+        while (!arrayDeque.isEmpty()&&val>arrayDeque.getFirst()){
+            arrayDeque.removeFirst();
+        }
+        arrayDeque.addFirst(val);
+
+    }
+    public int peek(){
+        return arrayDeque.getLast();
+    }
+}
 public class Q239SlidingWindowMaximum {
     public int[] maxSlidingWindow(int[] nums, int k) {
-    return nums;
+        MyQueue queue=  new MyQueue();
+        int []arr=new int[nums.length-k+1];
+        int num=0;
+        for (int i=0;i<k;i++){
+            queue.ru(nums[i]);
+        }
+        for (int i=k;i< nums.length;i++){
+            arr[num++]=queue.peek();
+            queue.chu(nums[i-k]);
+            queue.ru(nums[i]);
+        }
+        arr[num++]=queue.peek();
+        return arr;
     }
-
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3};
         int []arr = new Q239SlidingWindowMaximum().maxSlidingWindow(nums, 3);

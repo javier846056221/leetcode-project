@@ -1,7 +1,7 @@
 package com.leecode.leetcodeproject.question.carl.Gragh;
 
 import java.util.ArrayDeque;
-
+//todo VISIT数组不回填 因为每个位置只会走一遍 走过了就填上了 以后就不能再经过了 而单词搜素不同 可以通过不同的路线经过同一个位置 因此需要回填used
 public class Q200NumberOfIslands {
     boolean[] []visit;
     int [][]fangxiang=new int[][]{{0,1},{0,-1},{-1,0},{1,0}};

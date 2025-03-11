@@ -24,7 +24,7 @@ package com.leecode.leetcodeproject.interview.mianjing;
 //
 //
 // Related Topics 双指针 字符串 👍 189 👎 0
-
+//todo 双指针遍历方式与 版本号一致
 
 public class Q0106CompressString {
     public String compressString(String S) {
@@ -32,7 +32,7 @@ public class Q0106CompressString {
         StringBuffer ans=  new StringBuffer();
         int left=0;
         int right=0;
-        while (right< chars.length){
+        while (right< chars.length){//left也行
             int num=0;
             char start=chars[left];
             while (right< chars.length&&chars[right]==chars[left]){//todo 注意顺序 right不越界先到&&前面

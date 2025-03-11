@@ -32,41 +32,42 @@ import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Q40ZuheZongHe2 {
-     ArrayList<List<Integer>> ans=new ArrayList<>();
-     ArrayList<Integer>path=new ArrayList<>();
-     boolean[] used;
-     int sum=0;
+    ArrayList<List<Integer>> ans = new ArrayList<>();
+    ArrayList<Integer> arrayList = new ArrayList<>();
+    boolean[] used;
+    int sum = 0;
+
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        used=new boolean[candidates.length];
         Arrays.sort(candidates);
-        backtracking(candidates,target);
+        used = new boolean[candidates.length];
+        backtracking(candidates, target, 0);
         return ans;
     }
-    void backtracking(int [ ]nums,int target){
-        if (sum== target){
-            ans.add(new ArrayList<>(path));
+
+    public void backtracking(int[] candidates, int target, int start) {
+        if (sum > target) return;
+        if (sum == target) {
+            ans.add(new ArrayList(arrayList));
             return;
         }
-        if (sum>target)return;
-        for (int i = 0; i < nums.length; i++) {
-            if (i>0&&nums[i]==nums[i-1]&&used[i-1] == true) {
-                continue;
-            }
-            path.add(nums[i]);
+        for (int i = start; i < candidates.length; i++) {
+            if (i > 0 && candidates[i] == candidates[i - 1] && used[i - 1] == false) continue;
+            sum += candidates[i];
             used[i] = true;
-            sum+=nums[i];
-            backtracking(nums,target);
-            path.remove(path.size() - 1);
+            arrayList.add(candidates[i]);
+            backtracking(candidates, target, i + 1);
+            sum -= candidates[i];
+            arrayList.remove(arrayList.size() - 1);
             used[i] = false;
-            sum-=nums[i];
         }
+
     }
-
-
     public static void main(String[] args) {
         int[] nums = new int[]{10,1,2,7,6,1,5};
-       List ans = new Q40ZuheZongHe2().combinationSum2(nums,8);
+        List ans = new Q40ZuheZongHe2().combinationSum2(nums,8);
         System.out.println(ans);
 
     }
 }
+
+
